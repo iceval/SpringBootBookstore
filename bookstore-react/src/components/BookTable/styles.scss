@@ -1,0 +1,37 @@
+.book-table {
+  text-align: center;
+
+  &__item {
+    border: solid;
+  }
+
+  &__data {
+    background-color: #f2f2f2;
+  }
+
+  &__button {
+    width: 100%;
+    height: 100%;
+    border: none;
+
+    &:hover {
+      opacity: 0.5;
+    }
+
+    &:active {
+      opacity: 1;
+    }
+  }
+
+  &__button-change {
+    background-color: #f13737;
+  }
+
+  &__button-buy {
+    background-color: #7256e2;
+  }
+
+  &__topic {
+    background-color: #dbb80d;
+  }
+}

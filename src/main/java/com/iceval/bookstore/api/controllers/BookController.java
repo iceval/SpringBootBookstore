@@ -20,6 +20,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/books")
 @Api(description = "Bookstore")
 public class BookController {
@@ -34,14 +35,13 @@ public class BookController {
     }
 
     @GetMapping()
-    public List<BookDto> getBooks(){
-        return bookService.getBooks().stream().map(this::convertToBookDto)
-                .collect(Collectors.toList());
+    public List<BookEntity> getBooks(){
+        return bookService.getBooks();
     }
 
     @GetMapping("/{id}")
-    public BookDto getBookById(@PathVariable("id") int id){
-        return convertToBookDto(bookService.getBookById(id));
+    public BookEntity getBookById(@PathVariable("id") int id){
+        return bookService.getBookById(id);
     }
 
     @PostMapping()
@@ -110,9 +110,5 @@ public class BookController {
 
     private BookEntity convertToBookEntity(BookDto personDTO) {
         return modelMapper.map(personDTO, BookEntity.class);
-    }
-
-    private BookDto convertToBookDto(BookEntity bookEntity) {
-        return modelMapper.map(bookEntity, BookDto.class);
     }
 }

@@ -28,7 +28,7 @@ public class BookEntity {
 
     @Column(name = "date")
     @NotNull(message = "Date should not be null")
-    @JsonFormat(pattern = "dd/MM/yyyy")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate date;
 
     public int getId() {

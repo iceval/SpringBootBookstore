@@ -17,7 +17,7 @@ public class BookDto {
     private String title;
 
     @NotNull(message = "Date should not be null")
-    @JsonFormat(pattern = "dd/MM/yyyy")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate date;
 
     public String getAuthor() {

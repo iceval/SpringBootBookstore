@@ -1,0 +1,20 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+
+  &__button {
+    background-color: #31c747;
+    border: solid;
+
+    &:hover {
+      opacity: 0.5;
+    }
+
+    &:active {
+      opacity: 1;
+    }
+  }
+}

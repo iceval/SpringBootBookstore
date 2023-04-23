@@ -1,0 +1,60 @@
+.form {
+  &.active {
+    display: block;
+  }
+
+  &__box {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 15% auto;
+    padding: 20px;
+    background-color: #fefefe;
+    border: 2px solid #888;
+  }
+
+  &__back {
+    width: 28px;
+    height: 28px;
+    margin-left: auto;
+    background-color: #fefefe;
+    border: none;
+    opacity: 0.5;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    &::before,
+    &::after {
+      position: absolute;
+      width: 4px;
+      height: 32px;
+      margin: -16px -2px;
+      background-color: #333;
+      content: '';
+    }
+
+    &::before {
+      transform: rotate(45deg);
+    }
+
+    &::after {
+      transform: rotate(-45deg);
+    }
+  }
+
+  &__title {
+    text-align: center;
+  }
+
+  &__input {
+    margin: 10px 0;
+  }
+
+  &__button {
+    width: 40%;
+    margin: 0 auto;
+    background-color: #31c747;
+  }
+}
