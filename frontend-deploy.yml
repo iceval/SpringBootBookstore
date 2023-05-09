@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: bookstore-frontend-deploy
+    labels:
+      name: bookstore-frontend-deploy
+      app: bookstore
+spec:
+  selector:
+      matchLabels:
+          name: bookstore-frontend-pod
+          app: bookstore
+  replicas: 1
+  template:
+    metadata:
+      name: bookstore-frontend-pod
+      labels: 
+          name: bookstore-frontend-pod
+          app: bookstore
+    spec:
+        containers:
+          - name: frontend
+            image: bookstore-frontend:latest
+            imagePullPolicy: IfNotPresent
+            ports:
+                - containerPort: 3000

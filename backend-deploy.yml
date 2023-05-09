@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: bookstore-backend-deploy
+    labels:
+      name: bookstore-backend-deploy
+      app: bookstore
+spec:
+  selector:
+      matchLabels:
+          name: bookstore-backend-pod
+          app: bookstore
+  replicas: 1
+  template:
+    metadata:
+      name: bookstore-backend-pod
+      labels: 
+          name: bookstore-backend-pod
+          app: bookstore
+    spec:
+        containers:
+          - name: backend
+            image: bookstore-backend:latest
+            imagePullPolicy: IfNotPresent
+            ports:
+                - containerPort: 8080

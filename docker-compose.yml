@@ -1,19 +1,11 @@
 version: '3.9'
 
 services:
-  bookstore_db:
+  db:
     container_name: bookstore_db
-    image: postgres:15-alpine
-    restart: always
+    build: ./postgresql
     ports:
       - 5432:5432
-    environment:
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_USER: postgres
-      POSTGRES_DB: Bookstore
-    volumes:
-       - ./postgresql/create-table.sql:/docker-entrypoint-initdb.d/create-table.sql
-       - ./postgresql/fill-table.sql:/docker-entrypoint-initdb.d/fill-table.sql
 
   backend:
     container_name: bookstore_backend

@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+    name: bookstore-db
+    labels:
+        name: bookstore-db-service
+        app: bookstore
+spec:
+    ports:
+        - port: 5432
+          targetPort: 5432
+    selector:
+        name: bookstore-db-pod
+        app: bookstore

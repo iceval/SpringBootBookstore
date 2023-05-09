@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: bookstore-db-deploy
+    labels:
+      name: bookstore-db-deploy
+      app: bookstore
+spec:
+  selector:
+      matchLabels:
+          name: bookstore-db-pod
+          app: bookstore
+  replicas: 1
+  template:
+    metadata:
+      name: bookstore-db-pod
+      labels: 
+          name: bookstore-db-pod
+          app: bookstore
+    spec:
+        containers:
+          - name: db
+            image: bookstore-db:latest
+            imagePullPolicy: IfNotPresent
+            env:
+              - name: POSTGRES_USER
+                value: postgres
+              - name: POSTGRES_PASSWORD
+                value: postgres
+              - name: POSTGRES_HOST_AUTH_METHOD
+                value: trust
