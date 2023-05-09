@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="DEBUG">
+    <Properties>
+        <property name="LOG_PATH" value="./logs" />
+        <property name="LOG_FILE_NAME" value="logs-log4j2" />
+        <property name="ALL_ERRORS_FILE_NAME" value="all-errors-log4j2" />
+    </Properties>
+
+    <Appenders>
+        <Console name="LogToConsole" target="SYSTEM_OUT">
+            <PatternLayout
+                    pattern="%style{%d{ISO8601}}{white}
+                    %highlight{%-5level} [%style{%t}{bright,yellow}] : %msg%n%throwable"
+                    disableAnsi="false"
+            />
+        </Console>
+
+        <File name="LogToFile" fileName="${LOG_PATH}/${LOG_FILE_NAME}.log">
+            <PatternLayout>
+                <Pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level : %msg%n</Pattern>
+            </PatternLayout>
+        </File>
+
+        <File name="AllErrorsToFile" fileName="${LOG_PATH}/${ALL_ERRORS_FILE_NAME}.log">
+            <PatternLayout>
+                <Pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level : %msg%n</Pattern>
+            </PatternLayout>
+        </File>
+    </Appenders>
+
+    <Loggers>
+        <Logger name="com.iceval.bookstore" level="debug"
+                additivity="false">
+            <AppenderRef ref="LogToConsole" />
+            <AppenderRef ref="LogToFile" />
+        </Logger>
+
+        <Root level="error" additivity="false">
+            <AppenderRef ref="AllErrorsToFile" />
+        </Root>
+    </Loggers>
+
+</Configuration>
